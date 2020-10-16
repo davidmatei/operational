@@ -14,11 +14,10 @@ public class DeliveryRequestEvent {
     private String country;
 
     private int priority;
+    private final boolean isProfessional;
 
 
-
-
-    public DeliveryRequestEvent(double length, double width, double height, double weight, String address, String addressNumber, String bus, String postalCode, String country, int priority) {
+    public DeliveryRequestEvent(double length, double width, double height, double weight, String address, String addressNumber, String bus, String postalCode, String country, int priority, boolean isProfessional) {
         this.length = length;
         this.width = width;
         this.height = height;
@@ -29,6 +28,7 @@ public class DeliveryRequestEvent {
         this.postalCode = postalCode;
         this.country = country;
         this.priority = priority;
+        this.isProfessional = isProfessional;
     }
 
     public double getLength() {
@@ -69,5 +69,9 @@ public class DeliveryRequestEvent {
 
     public int getPriority() {
         return priority;
+    }
+
+    public boolean isProfessional() {
+        return isProfessional;
     }
 }

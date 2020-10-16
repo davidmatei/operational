@@ -21,6 +21,7 @@ public class DeliveryRequestRepositoryStub implements DeliveryRequestRepository 
 
     @Override
     public void persist(DeliveryRequest deliveryRequest) {
+        deliveryRequest.setId(1);
         store.add(deliveryRequest);
     }
 }
