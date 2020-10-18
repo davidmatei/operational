@@ -38,11 +38,12 @@ public class DeliveryRequest {
         return price;
     }
 
-    public void calculatePrice(int basePrice, int weightFactor) {
-        price = basePrice + weight * weightFactor;
-    }
 
     public int getId() {
         return 1;
+    }
+
+    public void calculatePrice(int basePrice, int weightFactor) {
+        price = basePrice + weight * weightFactor;
     }
 }
