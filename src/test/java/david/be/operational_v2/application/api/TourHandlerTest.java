@@ -25,10 +25,12 @@ public class TourHandlerTest {
 
         ParcelRepository parcelRepository = new ParcelRepositoryStub();
         ParcelHandler parcelHandler = new ParcelHandler(parcelRepository);
-//toevoegen van Parcel aan Repo
+        //toevoegen van Parcel aan Repo
         parcelHandler.handle(parcelEvent());
         parcelHandler.handle(parcelEvent2());
-//alle Parcels ophalen die klaar zijn voor levering
+        //toevoegen van een Parcel met een andere postcode
+        parcelHandler.handle(parcelEvent3());
+        //alle Parcels ophalen die klaar zijn voor levering
         List<Parcel> allParcelsReadyForShipment = parcelHandler.getAllParcelsReadyForDelivery();
 
         TourRepository tourRepository = new TourRepositoryStub();
@@ -37,8 +39,9 @@ public class TourHandlerTest {
         tourHandler.addTour(tour2018tot2020(maxDeliveryCarCapacity));
         //WHEN
 
+        //toewijzen van Paket aan Ronde (parcelEvent3 heeft een andere postCode dan Ronde met ID 1
+        //dus parcelEvent3 zal niet worden toegevoegd aan de tour.
         tourHandler.addParcelToTour(1, allParcelsReadyForShipment);
-
         //THEN
         Tour tour = tourRepository.findById(1);
         assertEquals(2, tour.getParcels().size());
@@ -53,14 +56,22 @@ public class TourHandlerTest {
     }
 
 
-    private ParcelEvent parcelEvent2() {
-        return new ParcelEvent(1, 3.0, 5.0, 4.0, 13, 2018, 2);
 
-    }
+
+
 
     private ParcelEvent parcelEvent() {
         return new ParcelEvent(2, 2.0, 4.0, 3.0, 12, 2020, 1);
     }
 
+    private ParcelEvent parcelEvent2() {
+        return new ParcelEvent(2, 3.0, 5.0, 4.0, 13, 2018, 2);
+
+    }
+
+    private ParcelEvent parcelEvent3() {
+        return new ParcelEvent(3, 3.0, 5.0, 4.0, 13, 2060, 1);
+
+    }
 
 }
