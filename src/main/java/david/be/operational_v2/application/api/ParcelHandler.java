@@ -15,7 +15,7 @@ public class ParcelHandler {
     }
 
 
-    public void handle(ParcelEvent event) {
+    public void save(ParcelEvent event) {
         Parcel parcel = mapParcel(event);
         parcelRepository.persist(parcel);
     }

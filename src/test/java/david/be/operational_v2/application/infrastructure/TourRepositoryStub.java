@@ -26,9 +26,10 @@ public class TourRepositoryStub implements TourRepository {
     public void addParcelToTour(int tourId, List<Parcel> parcels) {
         Tour tour = findById(tourId);
 
+
         for (Parcel parcel : parcels
         ) {
-            //controle op postCodes
+            //controle op postCodes en status veranderen
             if (tour.getPostalCodes().contains(parcel.getPostalCode())) {
                 tour.addParcel(parcel);
             }

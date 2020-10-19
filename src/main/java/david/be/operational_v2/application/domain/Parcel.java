@@ -8,9 +8,13 @@ public class Parcel {
     private double height;
     private double weight;
 
+    private double cubicMeters;
+
     private int postalCode;
 
     private int priority;
+
+    private boolean isAssignedToRoute;
 
     public Parcel(int id, double length, double width, double height, double weight, int postalCode, int priority) {
         this.id = id;
@@ -20,6 +24,7 @@ public class Parcel {
         this.weight = weight;
         this.postalCode = postalCode;
         this.priority = priority;
+        this.isAssignedToRoute = false;
     }
 
     public int getId() {
@@ -28,6 +33,11 @@ public class Parcel {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+
+    public double getCubicMeters(){
+        return cubicMeters = this.width*this.height*this.length;
     }
 
     public double getLength() {
@@ -76,5 +86,13 @@ public class Parcel {
 
     public void setPriority(int priority) {
         this.priority = priority;
+    }
+
+    public boolean isAssignedToRoute() {
+        return isAssignedToRoute;
+    }
+
+    public void setAssignedToRoute(boolean assignedToRoute) {
+        isAssignedToRoute = assignedToRoute;
     }
 }
